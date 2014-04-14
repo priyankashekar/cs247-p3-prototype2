@@ -13,7 +13,7 @@
 
   function connect_to_chat_firebase(){
     /* Include your Firebase link here!*/
-    fb_instance = new Firebase("https://gsroth-p3-v1.firebaseio.com");
+    fb_instance = new Firebase("https://p3-prototype2.firebaseio.com");
 
     // generate new chatroom id or use existing id
     var url_segments = document.location.href.split("/#");
@@ -49,8 +49,10 @@
     // bind submission box
     $("#submission input").keydown(function( event ) {
       if (event.which == 13) {
-        if(has_emotions($(this).val())){
-          fb_instance_stream.push({m:username+": " +$(this).val(), v:cur_video_blob, c: my_color});
+        var emoticon = has_emotions($(this).val());
+        if(emoticon){
+          var inputReplaceEmoticon = $(this).val().replace(emoticon, "");
+          fb_instance_stream.push({m:username+": " +inputReplaceEmoticon, v:cur_video_blob, c: my_color}); //replace emoticons
         }else{
           fb_instance_stream.push({m:username+": " +$(this).val(), c: my_color});
         }
@@ -66,9 +68,10 @@
       // for video element
       var video = document.createElement("video");
       video.autoplay = true;
-      video.controls = false; // optional
-      video.loop = true;
-      video.width = 120;
+      video.controls = true; // optional
+      video.false = true; //no looping
+      video.width = 120 * 1.5;
+      video.height = 160 * 1.5;
 
       var source = document.createElement("source");
       source.src =  URL.createObjectURL(base64_to_blob(data.v));
@@ -103,8 +106,8 @@
     // callback for when we get video stream from user.
     var onMediaSuccess = function(stream) {
       // create video element, attach webcam stream to video element
-      var video_width= 160;
-      var video_height= 120;
+      var video_width= 160 * 0.7; //resized me window
+      var video_height= 120 * 0.7;
       var webcam_stream = document.getElementById('webcam_stream');
       var video = document.createElement('video');
       webcam_stream.innerHTML = "";
@@ -147,8 +150,8 @@
       };
       setInterval( function() {
         mediaRecorder.stop();
-        mediaRecorder.start(3000);
-      }, 3000 );
+        mediaRecorder.start(6000); //changed length to 6s
+      }, 6000 );
       console.log("connect to media stream!");
     }
 
@@ -163,10 +166,11 @@
 
   // check to see if a message qualifies to be replaced with video.
   var has_emotions = function(msg){
-    var options = ["lol",":)",":("];
+    var options = ["lol", "omg", ":)",":(", ":X", ">:)", ":O", ":D"]; //added kiss, devil, amazed, grin, omg
     for(var i=0;i<options.length;i++){
       if(msg.indexOf(options[i])!= -1){
-        return true;
+        //return true;
+        return options[i];
       }
     }
     return false;
