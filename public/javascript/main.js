@@ -70,8 +70,9 @@
       video.autoplay = true;
       video.controls = true; // optional
       video.false = true; //no looping
-      video.width = 120 * 1.5;
-      video.height = 160 * 1.5;
+      video.width = 120 * 5;
+      video.height = 160 * 5;
+      //video.className = "myVideo"; //FIX THIS
 
       var source = document.createElement("source");
       source.src =  URL.createObjectURL(base64_to_blob(data.v));
@@ -83,7 +84,11 @@
       // var video = document.createElement("img");
       // video.src = URL.createObjectURL(base64_to_blob(data.v));
 
-      document.getElementById("conversation").appendChild(video);
+      //document.getElementById("conversation").appendChild(video);
+ 
+      var theirVideoDiv = document.getElementById("theirVideo");
+      theirVideoDiv.innerHTML = '';
+      theirVideoDiv.appendChild(video);
     }
     // Scroll to the bottom every time we display a new message
     scroll_to_bottom(0);
