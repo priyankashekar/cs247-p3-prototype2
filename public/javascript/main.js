@@ -125,7 +125,7 @@
 
 
     // Scroll to the bottom every time we display a new message
-    scroll_to_bottom(0);
+    //scroll_to_bottom(0);
   }
 
   function scroll_to_bottom(wait_time){
@@ -159,13 +159,6 @@
       });
       video.play();
       webcam_stream.appendChild(video);
-
-      // counter
-      // var time = 0;
-      // var second_counter = document.getElementById('second_counter');
-      // var second_counter_update = setInterval(function(){
-      //   second_counter.innerHTML = time++;
-      // },1000);
 
       // now record stream in 5 seconds interval
       var video_container = document.getElementById('video_container');

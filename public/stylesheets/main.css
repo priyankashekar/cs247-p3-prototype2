@@ -32,6 +32,7 @@ a {
   margin-left: -400px;
   background: rgba(255, 255, 255, 0.7);
   z-index: 1;
+  cursor: pointer;
 }
 #submission {
   position: fixed;
@@ -65,7 +66,6 @@ a {
   display: none;
 }
 #theirVideo {
-  cursor: pointer;
   position: relative;
   z-index: -1;
 }
