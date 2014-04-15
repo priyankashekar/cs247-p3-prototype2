@@ -52,7 +52,7 @@
         var emoticon = has_emotions($(this).val());
         if(emoticon){
           var inputReplaceEmoticon = $(this).val().replace(emoticon, "");
-          fb_instance_stream.push({m:username+": " +inputReplaceEmoticon, v:cur_video_blob, c: my_color}); //replace emoticons
+          fb_instance_stream.push({m:username+": " +inputReplaceEmoticon, v:cur_video_blob, c: my_color, e: emoticon}); //replace emoticons
         }else{
           fb_instance_stream.push({m:username+": " +$(this).val(), c: my_color});
         }
@@ -97,26 +97,22 @@
 
 
       var gif = document.createElement("img");
-      var blah = ":)";
       
-      if (blah == ":)"){
+      if (data.e == ":)"){
           gif.src = "https://googledrive.com/host/0B7di6N1UZrDLdmlsdXJyeHgza3c/sun.gif";
-      } else if (blah == ":("){
+      } else if (data.e == ":("){
           gif.src = "https://googledrive.com/host/0B7di6N1UZrDLdmlsdXJyeHgza3c/raincloud.gif";
-      } else if (blah == ":O"){
+      } else if (data.e == ":O"){
           gif.src = "https://googledrive.com/host/0B7di6N1UZrDLdmlsdXJyeHgza3c/tornado.gif";
-      } else if (blah == ":X"){
+      } else if (data.e == ":X"){
           gif.src = "https://googledrive.com/host/0B7di6N1UZrDLdmlsdXJyeHgza3c/butterfly.gif";
-      } else if (blah == "lol"){
+      } else if (data.e == "lol"){
           gif.src = "https://googledrive.com/host/0B7di6N1UZrDLdmlsdXJyeHgza3c/rainbow.gif";
       }
 
       var weatherEffectDiv = document.getElementById("weatherEffect");
       weatherEffectDiv.innerHTML = '';
       weatherEffectDiv.appendChild(gif);
-      
-      //weatherGif.id = "weatherEffect";
-      //theirVideoDiv.appendChild(weatherGif);
     }
 
 

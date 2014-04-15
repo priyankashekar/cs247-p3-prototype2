@@ -68,3 +68,7 @@ a {
   left: 20px;
   top: 20px;
 }
+#weatherEffect img {
+  max-width: 500px;
+  max-height: 500px;
+}
