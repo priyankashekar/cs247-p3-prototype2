@@ -59,6 +59,9 @@
         $(this).val("");
       }
     });
+
+  
+
   }
 
   // creates a message node and appends it to the conversation
@@ -68,10 +71,12 @@
       // for video element
       var video = document.createElement("video");
       video.autoplay = true;
-      video.controls = true; // optional
+      video.controls = false; // optional
       video.false = true; //no looping
-      video.width = 120 * 5;
-      video.height = 160 * 5;
+      video.width = $('body').innerWidth();
+
+      //video.width = 120 * 5;
+      //video.height = 160 * 5;
       //video.className = "myVideo"; //FIX THIS
 
       var source = document.createElement("source");
@@ -89,7 +94,38 @@
       var theirVideoDiv = document.getElementById("theirVideo");
       theirVideoDiv.innerHTML = '';
       theirVideoDiv.appendChild(video);
+
+
+      var gif = document.createElement("img");
+      var blah = ":)";
+      
+      if (blah == ":)"){
+          gif.src = "https://googledrive.com/host/0B7di6N1UZrDLdmlsdXJyeHgza3c/sun.gif";
+      } else if (blah == ":("){
+          gif.src = "https://googledrive.com/host/0B7di6N1UZrDLdmlsdXJyeHgza3c/raincloud.gif";
+      } else if (blah == ":O"){
+          gif.src = "https://googledrive.com/host/0B7di6N1UZrDLdmlsdXJyeHgza3c/tornado.gif";
+      } else if (blah == ":X"){
+          gif.src = "https://googledrive.com/host/0B7di6N1UZrDLdmlsdXJyeHgza3c/butterfly.gif";
+      } else if (blah == "lol"){
+          gif.src = "https://googledrive.com/host/0B7di6N1UZrDLdmlsdXJyeHgza3c/rainbow.gif";
+      }
+
+      var weatherEffectDiv = document.getElementById("weatherEffect");
+      weatherEffectDiv.innerHTML = '';
+      weatherEffectDiv.appendChild(gif);
+      
+      //weatherGif.id = "weatherEffect";
+      //theirVideoDiv.appendChild(weatherGif);
     }
+
+
+      //make their video playback on click
+    $(video).click(function() {
+      video.play();
+    });
+
+
     // Scroll to the bottom every time we display a new message
     scroll_to_bottom(0);
   }
@@ -127,11 +163,11 @@
       webcam_stream.appendChild(video);
 
       // counter
-      var time = 0;
-      var second_counter = document.getElementById('second_counter');
-      var second_counter_update = setInterval(function(){
-        second_counter.innerHTML = time++;
-      },1000);
+      // var time = 0;
+      // var second_counter = document.getElementById('second_counter');
+      // var second_counter_update = setInterval(function(){
+      //   second_counter.innerHTML = time++;
+      // },1000);
 
       // now record stream in 5 seconds interval
       var video_container = document.getElementById('video_container');
@@ -171,7 +207,7 @@
 
   // check to see if a message qualifies to be replaced with video.
   var has_emotions = function(msg){
-    var options = ["lol", "omg", ":)",":(", ":X", ">:)", ":O", ":D"]; //added kiss, devil, amazed, grin, omg
+    var options = ["lol", "omg", ":)",":(", ":'(", ":X", ">:)", ":O", ":D"]; //added kiss, devil, amazed, grin, omg
     for(var i=0;i<options.length;i++){
       if(msg.indexOf(options[i])!= -1){
         //return true;

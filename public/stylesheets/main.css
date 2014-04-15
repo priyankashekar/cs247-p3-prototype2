@@ -6,9 +6,9 @@ a {
   color: #00B7FF;
 }
 #webcam_stream {
-  position: absolute;
+  position: fixed;
   bottom: 60px;
-  right: 10px;
+  right: 20px;
   padding: 0;
 }
 #webcam_stream video {
@@ -55,4 +55,16 @@ a {
 }
 .myVideo {
   display: none;
+}
+#theirVideo {
+  cursor: pointer;
+  position: relative;
+  z-index: -1;
+  /*  position: fixed;*/
+}
+#weatherEffect {
+  position: absolute;
+  z-index: 1;
+  left: 20px;
+  top: 20px;
 }
