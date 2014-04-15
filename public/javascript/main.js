@@ -116,8 +116,10 @@
     }
 
 
-      //make their video playback on click
-    $(video).click(function() {
+    //make their video playback on click of conversation window
+    var conversationDiv = document.getElementById("conversation");
+    $(conversation).click(function() {
+      var video = document.getElementsByTagName("video")[0];
       video.play();
     });
 
@@ -203,7 +205,7 @@
 
   // check to see if a message qualifies to be replaced with video.
   var has_emotions = function(msg){
-    var options = ["lol", "omg", ":)",":(", ":'(", ":X", ">:)", ":O", ":D"]; //added kiss, devil, amazed, grin, omg
+    var options = ["lol", ":)", ":(", ":X", ":O"]; //added kiss, amazed
     for(var i=0;i<options.length;i++){
       if(msg.indexOf(options[i])!= -1){
         //return true;

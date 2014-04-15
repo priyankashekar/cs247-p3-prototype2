@@ -28,7 +28,14 @@ a {
 #conversation{
   padding: 10px 10px 80px;
   overflow-y: scroll;
-  height: 100%;
+  height: 200%;
+  width: 800px;
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  margin-left: -400px;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 1; 
 }
 
 #submission{
@@ -38,6 +45,7 @@ a {
   right: 0;
   border-top: 2px solid #dcc;
   background: #fff;
+  z-index: 2;
 
   input{
     border: none;
@@ -69,8 +77,6 @@ a {
   cursor: pointer;
   position: relative;
   z-index: -1;
-
-/*  position: fixed;*/
 }
 
 #weatherEffect {
@@ -83,4 +89,5 @@ a {
 #weatherEffect img {
   max-width: 500px;
   max-height: 500px;
+  z-index: 0;
 }
